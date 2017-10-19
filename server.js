@@ -3,9 +3,11 @@ var app = express();
 var PORT = 4900;
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 // var todorouter = require('./todo/todoroutes');
 // var categoryrouter = require('./category/categoryroutes');
-// var userrouter = require('./user/userroutes');
+var userrouter = require('./user/userroutes');
+var postrouter = require('./post/postroutes');
 
 app.use(morgan("dev"));
 app.use(bodyParser.json());
@@ -17,7 +19,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 // mount routes
 // app.use('/todos', todorouter);
 // app.use('/category', categoryrouter);
-// app.use('/users', userrouter);
+app.use('/users', userrouter);
+app.use('/posts', postrouter);
 
 
 // express's automatic error handler middleware
